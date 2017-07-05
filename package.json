@@ -1,0 +1,19 @@
+{
+  "name": "blockchain-workshop",
+  "version": "0.0.1",
+  "description": "Very simple web app to play with open source blockchain libs",
+  "scripts": {
+    "start": "http-server app",
+    "compile": "truffle compile && mv build/contracts app && rm -r build",
+    "copy-contracts": "cp -r ./node_modules/zeppelin-solidity/contracts ./"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "zeppelin-solidity": "^1.1.0"
+  },
+  "devDependencies": {
+    "ethereumjs-testrpc": "^3.0.2",
+    "truffle": "3.2.2"
+  }
+}

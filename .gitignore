@@ -1,0 +1,5 @@
+build
+contracts
+node_modules
+app/libs
+app/contracts
