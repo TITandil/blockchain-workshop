@@ -10,7 +10,7 @@
 
 ```sh
 git clone https://github.com/TITandil/blockchain-workshop
-cd eth-workshop
+cd blockchain-workshop
 npm install http-server -g
 npm install
 bower install
