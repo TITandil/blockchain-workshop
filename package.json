@@ -4,8 +4,8 @@
   "description": "Very simple web app to play with open source blockchain libs",
   "scripts": {
     "start": "http-server app",
-    "compile": "truffle compile && mv build/contracts app && rm -r build",
-    "copy-contracts": "cp -r ./node_modules/zeppelin-solidity/contracts ./"
+    "compile": "truffle compile && cp -rf build/contracts app && rm -r build",
+    "copy-contracts": "mkdir contracts && cp -r ./node_modules/zeppelin-solidity/contracts ./contracts/zeppelin"
   },
   "author": "",
   "license": "MIT",
