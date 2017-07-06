@@ -1,7 +1,7 @@
 
 var bitcore = require('bitcore-lib');
 var Message = require('bitcore-message');
-console.log('Bitcore Lib:', bitcore);
+console.log('Bitcore Lib:', bitcore, '\n\n');
 
 var TEST_SEND = false;
 
@@ -28,28 +28,28 @@ var signature = Message('hello, world').sign(privateKey);
 var address = address.toString();
 var verified = Message('hello, world').verify(address, signature);
 
-console.log('Signature', signature, 'from', address, 'is', verified);
+console.log('Signature', signature, 'from', address, 'is', verified, '\n\n');
 
 // Get testnet info
 console.log('Getting testnet info..');
 $.get('http://tbtc.blockr.io/api/v1/coin/info', function(response) {
-  console.log('BTC Testnet Info', response.data);
+  console.log('BTC Testnet Info', response.data, '\n\n');
 });
 
 // Get balance of address
 console.log('Getting address balance..');
 $.get('http://tbtc.blockr.io/api/v1/address/info/mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib', function(response) {
-  console.log('mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib Balance', response.data.balance);
+  console.log('mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib Balance', response.data.balance, '\n\n');
 });
 
 // Get txs of address
 console.log('Getting address txs..');
 $.get('http://tbtc.blockr.io/api/v1/address/txs/mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib', function(response) {
-  console.log('mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib Transactions', response.data);
+  console.log('mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib Transactions', response.data, '\n\n');
 });
 
 if (TEST_SEND){
-  
+
   //////////////////////// Build a bitcoin transaction ////////////////////////
   var toAddress = bitcore.Address(
     bitcore.PrivateKey.fromWIF(pvKeys[1]).toPublicKey(),
@@ -59,7 +59,7 @@ if (TEST_SEND){
   // Get the unspent outputs of address
   console.log('Getting address unspents..');
   $.get('http://tbtc.blockr.io/api/v1/address/unspent/mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib', function(response) {
-    console.log('mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib unspents', response.data);
+    console.log('mpCX4JLdCNeUDjf5sfrsyQArBHrcVDDuib unspents', response.data, '\n\n');
 
     var blockrUnspents = response.data.unspent;
     var bitcoreUnspents = [];
@@ -75,7 +75,7 @@ if (TEST_SEND){
       );
     });
 
-    console.log('Bitcore unspents:', bitcoreUnspents);
+    console.log('Bitcore unspents:', bitcoreUnspents, '\n\n');
 
     var transaction = new bitcore.Transaction()
       .from(bitcoreUnspents)          // Feed information about what unspent outputs one can use
@@ -84,7 +84,7 @@ if (TEST_SEND){
       .sign(privateKey)     // Signs all the inputs it can
 
     console.log('Bitcore transaction:', transaction);
-    console.log('Bitcore transaction hex:', transaction.serialize());
+    console.log('Bitcore transaction hex:', transaction.serialize(), '\n\n');
 
     $.post("http://tbtc.blockr.io/api/v1/tx/push", { "hex": transaction.serialize() } , function(txResponse) {
       console.log('Transaction push response:',txResponse)
