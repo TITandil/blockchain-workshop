@@ -5,7 +5,7 @@
   "scripts": {
     "start": "http-server app",
     "compile": "truffle compile && cp -rf build/contracts app && rm -r build",
-    "copy-contracts": "mkdir contracts && cp -r ./node_modules/zeppelin-solidity/contracts ./contracts/zeppelin"
+    "copy-contracts": "cp -rf ./node_modules/zeppelin-solidity/contracts ./contracts/zeppelin"
   },
   "author": "",
   "license": "MIT",
